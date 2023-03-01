@@ -15,58 +15,49 @@ function SignUp() {
         setIsLogin((prevState) => !prevState);
     }
 
-    const submitHandler = async (event) => {
-        event.preventDefault();
-        const email = emailRef.current.value;
-        const password = passwordRef.current.value;
-        let url;
-        if (isLogin) {
-            url = 'https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyAGhMOoCkZh2xzJ3X_mtq7XNf2z2AOvrrQ';
-        } else {
-            if (password !== confirmPasswordRef.current.value) {
-                return alert('Password Do Not Match');
-            } else {
-                url = 'https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyAGhMOoCkZh2xzJ3X_mtq7XNf2z2AOvrrQ';
-            }
-        }
-        console.log(email, password)
-        try {
-            const res = await fetch(url,
-                {
-                    method: "POST",
-                    body: JSON.stringify({
-                        email: emailRef.current.value,
-                        password: passwordRef.current.value
-                    }),
-                    headers: {
-                        'Content-Type': 'application/json',
-                    }
-                })
-            if (res.ok) {
-                const data = await res.json();
-                localStorage.setItem('idToken', JSON.stringify(data))
-                authCtx.login(data.idToken);
-                console.log(data.idToken);
-                setIsLogin(true)
-                emailRef.current.value = "";
-                passwordRef.current.value = "";
-                if (!isLogin) {
-                    confirmPasswordRef.current.value = ""
-                    alert("SignUp Successful")
-                } else {
-                    alert("Login Successful")
-                    navigate("/home")
-                }
-            } else {
-                const data = await res.json();
-                throw data.error
-            }
-        }
-        catch (error) {
-            console.log(error.message)
-        }
-    };
+    
+  const submitHandler = (event) => {
+    event.preventDefault();
+    const enteredEmail = emailRef.current.value;
+    const enteredPassword = passwordRef.current.value;
+    let url;
 
+    if(isLogin){
+      url = 'https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyAGhMOoCkZh2xzJ3X_mtq7XNf2z2AOvrrQ';
+    }else {
+      url = 'https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyAGhMOoCkZh2xzJ3X_mtq7XNf2z2AOvrrQ'
+    }
+    fetch(url,
+    {
+      method: 'POST',
+      body: JSON.stringify({
+        email: enteredEmail,
+        password: enteredPassword,
+        returnSecureToken: true
+      }),
+      headers:{
+        'Content-type': 'application/json'
+      }
+    }).then((res)=>{
+      if(res.ok){
+        return res.json();
+      }else{
+        return res.json().then(data=>{
+          let errorMessage = 'Authentication Failed!';
+          // if(data && data.error && data.error.message){
+          //   errorMessage = data.error.message
+          // }
+          throw new Error(errorMessage);
+        })
+      }
+    }).then((data) => {
+      authCtx.login(data.idToken);
+        navigate('/home');
+    })
+    .catch((err) => {
+      alert(err.message);
+    });
+  }
     return (
         <Fragment>
         <div className="signup">

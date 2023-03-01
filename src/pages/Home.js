@@ -1,8 +1,10 @@
-import { Fragment } from "react";
+import { Fragment, useContext } from "react";
 import { NavLink } from "react-router-dom";
+import AuthContext from "../store/AuthContext";
 import './Home.css';
 
 const Home = () => {
+    const authCtx = useContext(AuthContext);
     const verifyEmail = async (e) => {
         e.preventDefault();
         try {
@@ -13,7 +15,7 @@ const Home = () => {
             },
             body: JSON.stringify({
               requestType: 'VERIFY_EMAIL',
-              idToken: JSON.parse(localStorage.getItem('idToken')).idToken
+              idToken: authCtx.token
             })
           });
           const data = await res.json();
