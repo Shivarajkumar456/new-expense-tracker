@@ -5,6 +5,7 @@ import About from './pages/AboutUs';
 import SignUpPage from './pages/SignUpPage';
 import UpdateProfile from './Components/UpdateProfile/UpdateProfile';
 import ForgotPassword from './Components/ForgotPswd/ForgotPswd';
+import Expenses from './Components/Expenses/Expenses'
 import { Fragment } from 'react';
 
 function App() {
@@ -17,6 +18,7 @@ function App() {
         <Route path="/updateprofile" element={<UpdateProfile />} />
         <Route path="/login" element={<SignUpPage/>} />
         <Route path='/aboutus' element={<About />} />
+        <Route path='/expenses' element={<Expenses />} />
         <Route path='/forgotPassword' element={<ForgotPassword />} />
       </Routes> 
     </Fragment>

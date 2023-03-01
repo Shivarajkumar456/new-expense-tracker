@@ -51,8 +51,8 @@ function SignUp() {
         })
       }
     }).then((data) => {
-      authCtx.login(data.idToken);
-        navigate('/home');
+      authCtx.login(data.idToken, enteredEmail);
+        navigate('/expenses');
     })
     .catch((err) => {
       alert(err.message);

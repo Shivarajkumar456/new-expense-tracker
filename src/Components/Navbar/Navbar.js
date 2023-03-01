@@ -19,6 +19,7 @@ function Navbar() {
       <ul className="navbar-list">
           <li><NavLink to="/home" className="navbar-link">Home</NavLink></li>
           <li><NavLink to="/products" className="navbar-link">Products</NavLink></li>
+          {authCtx.isLoggedIn && <li><NavLink to="/expenses" className="navbar-link">My Expenses</NavLink></li>}
           <li><NavLink to="/aboutus" className="navbar-link">About Us</NavLink></li>
           {authCtx.isLoggedIn && <li><NavLink className="navbar-link" onClick={logoutHandler}>LogOut</NavLink></li>}
         </ul>
