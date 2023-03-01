@@ -1,0 +1,12 @@
+.main-home{
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+.profile{
+    background: lightgray;
+    color: black;
+    padding: 10px;
+    width: auto;
+    border-radius: 50px;
+}

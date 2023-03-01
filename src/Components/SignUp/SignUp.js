@@ -1,8 +1,10 @@
-import React, { useRef, useState, Fragment } from 'react';
+import React, { useRef, useState, Fragment, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
+import AuthContext from '../../store/AuthContext';
 import './SignUp.css';
 
 function SignUp() {
+    const authCtx = useContext(AuthContext);
     const navigate = useNavigate();
     const emailRef = useRef();
     const passwordRef = useRef();
@@ -43,6 +45,8 @@ function SignUp() {
             if (res.ok) {
                 const data = await res.json();
                 localStorage.setItem('idToken', JSON.stringify(data))
+                authCtx.login(data.idToken);
+                console.log(data.idToken);
                 setIsLogin(true)
                 emailRef.current.value = "";
                 passwordRef.current.value = "";

@@ -1,0 +1,57 @@
+.update{
+    height: 100vh;
+}
+
+.main-update-profile{
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+.profile-update{
+    background: lightgray;
+    color: black;
+    padding: 0 3px;
+    border-radius: 5px;
+    padding: 0 10px;
+}
+.main-update-form{
+    margin-top: 50px;
+    display: flex;
+    justify-content: center;
+}
+
+  .form-row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+  }
+  
+  .form-row label {
+    width: 150px;
+    margin-right: 5px;
+    font-weight: bold;
+  }
+  
+  .form-row input {
+    flex: 1;
+    margin-right: 10px;
+    border-radius: 10px;
+    border: 1px solid black;
+  }
+
+  .cancel-button{
+    border: 1px solid red;
+    color: red;
+    background: transparent;
+    border-radius: 10px;
+  }
+
+  .submit-button{
+    border: none;
+    background-color: rgb(158, 98, 98);
+    color: wheat;
+    border-radius: 10px;
+  }
+  

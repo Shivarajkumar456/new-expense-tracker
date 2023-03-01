@@ -3,15 +3,17 @@ import Navbar from './Components/Navbar/Navbar';
 import Home from './pages/Home';
 import About from './pages/AboutUs';
 import SignUpPage from './pages/SignUpPage';
+import UpdateProfile from './Components/UpdateProfile/UpdateProfile';
 import { Fragment } from 'react';
 
 function App() {
   return (
     <Fragment>
       <Navbar />
-      <SignUpPage />
       <Routes>
+        <Route path="/" element={<SignUpPage/>} exact/>
         <Route path="/home" element={<Home/>} />
+        <Route path="/updateprofile" element={<UpdateProfile />} />
         <Route path="/login" element={<SignUpPage/>} />
         <Route path='/aboutus' element={<About />} />
       </Routes> 
