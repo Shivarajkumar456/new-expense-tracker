@@ -1,5 +1,5 @@
 import React, { useRef, useState, Fragment, useContext } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, NavLink } from 'react-router-dom';
 import AuthContext from '../../store/AuthContext';
 import './SignUp.css';
 
@@ -68,6 +68,7 @@ function SignUp() {
             ="password" name="password" placeholder='Password' ref={passwordRef} required />
             {!isLogin && <input type="password" id="confirm-password" name="confirm-password" ref={confirmPasswordRef} placeholder='Confirm Password' required />}
             <button type="submit" className="btn-primary">{isLogin ? 'Sign In': 'Sign Up'}</button>
+            {isLogin && <p className='login-prompt '><NavLink to='/forgotPassword'>Forget password?</NavLink></p>}
           </form>
           <div className='isLogin'>
         <button className="toggle" onClick={loginHandler}>{!isLogin?'Have an account?':`Don't have an acoount? `} {!isLogin ? 'Log In': 'Sign Up'}</button>
