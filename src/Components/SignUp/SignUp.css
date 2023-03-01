@@ -1,49 +1,50 @@
 .signup {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     height: 100vh;
   }
-
+  
   .signup h2 {
     font-size: 24px;
     margin-bottom: 20px;
     text-align: center;
   }
-
+  
   .signup form {
     display: flex;
     flex-direction: column;
-    width: 400px;
+    width: 300px;
     padding: 20px;
     background-color: #fff;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
   }
-
+  
   .signup label {
     font-size: 18px;
     margin-bottom: 10px;
   }
-
+  
   .signup input {
-    padding: 10px;
+    padding: 6px;
     font-size: 16px;
     border: 1px solid #ccc;
-    border-radius: 5px;
+    border-radius: 50px;
     margin-bottom: 20px;
   }
-
-  .signup button {
-    padding: 10px;
-    font-size: 18px;
+  
+  .btn-primary {
+    padding: 6px;
+    font-size: 14px;
     background-color: #007bff;
     color: #fff;
     border: none;
-    border-radius: 5px;
+    border-radius: 50px;
     cursor: pointer;
   }
-
-  .signup button:hover {
+  
+  .btn-primary:hover {
     background-color: #0069d9;
   }
 
@@ -51,12 +52,35 @@
     margin-top: 20px;
     text-align: center;
   }
-
+  
   .login-prompt a {
     color: #007bff;
     text-decoration: none;
   }
-
+  
   .login-prompt a:hover {
     text-decoration: underline;
   }
+
+  .isLogin{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .toggle {
+    margin-top: 1rem;
+    font-size: 14px;
+    width: 300px;
+    padding: 6px;
+    background-color: #e2e9f1;
+    /* box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2); */
+    border: 1px solid #007bff;
+    border-radius: 5px;
+  }
+  
+  .toggle:hover {
+    background-color: #d8dfe7;
+  }
+
+  

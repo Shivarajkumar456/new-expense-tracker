@@ -8,7 +8,7 @@ function Navbar() {
       <div className="navbar-brand">
       <NavLink to="/" className="navbar-heading" style={{color: '#007bff', fontStyle: 'italic'}}><h1>MyWeblink</h1></NavLink>
       <ul className="navbar-list">
-          <li><NavLink to="/" className="navbar-link">Home</NavLink></li>
+          <li><NavLink to="/home" className="navbar-link">Home</NavLink></li>
           <li><NavLink to="/products" className="navbar-link">Products</NavLink></li>
           <li><NavLink to="/aboutus" className="navbar-link">About Us</NavLink></li>
         </ul>

@@ -1,12 +1,21 @@
+import { Route, Routes } from 'react-router-dom';
 import Navbar from './Components/Navbar/Navbar';
-import SignUp from './Components/SignUp/SignUp';
+import Home from './pages/Home';
+import About from './pages/AboutUs';
+import SignUpPage from './pages/SignUpPage';
+import { Fragment } from 'react';
 
 function App() {
   return (
-    <div>
+    <Fragment>
       <Navbar />
-      <SignUp />
-    </div>
+      <SignUpPage />
+      <Routes>
+        <Route path="/home" element={<Home/>} />
+        <Route path="/login" element={<SignUpPage/>} />
+        <Route path='/aboutus' element={<About />} />
+      </Routes> 
+    </Fragment>
   );
 }
 
