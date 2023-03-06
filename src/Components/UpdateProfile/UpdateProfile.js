@@ -1,14 +1,17 @@
-import React,{useRef, useEffect, useState} from 'react'
-import './UpdateProfile.css'
+import React,{useRef, useEffect, useState} from 'react';
+import { useDispatch, useSelector } from "react-redux";
+import { authAction } from "../../store/authReducer";
+import './UpdateProfile.css';
 import { useNavigate } from 'react-router-dom';
 
 export const UpdateProfile = () => {
+  const dispatch = useDispatch();
   const [displayName, setDisplayName] = useState('');
   const [photoURL, setPhotoURL] = useState('');
     const inputFullnameRef = useRef();
     const inputPhotoUrlRef = useRef();
     const navigate = useNavigate();
-
+    const token = useSelector((state) => state.auth.token);
     const handleCancel = () => {
         navigate('/home');
     };
@@ -18,7 +21,7 @@ export const UpdateProfile = () => {
         const res = await fetch(`https://identitytoolkit.googleapis.com/v1/accounts:lookup?key=AIzaSyAGhMOoCkZh2xzJ3X_mtq7XNf2z2AOvrrQ`, {
           method: 'POST',
           body: JSON.stringify({
-            idToken: JSON.parse(localStorage.getItem('idToken')).idToken,
+            idToken: token,
           }),
           headers: {
             'Content-Type': 'application/json',
@@ -47,7 +50,7 @@ export const UpdateProfile = () => {
        const res = await fetch('https://identitytoolkit.googleapis.com/v1/accounts:update?key=AIzaSyAGhMOoCkZh2xzJ3X_mtq7XNf2z2AOvrrQ',{
         method : 'POST',
         body :JSON.stringify({
-            idToken: JSON.parse(localStorage.getItem('idToken')).idToken,
+            idToken: token,
             displayName: inputFullnameRef.current.value,
             photoUrl: inputPhotoUrlRef.current.value,
             returnSecureToken: true,
@@ -59,7 +62,10 @@ export const UpdateProfile = () => {
 
        const data = await res.json();
        console.log(data)
-
+       dispatch(authAction.updateProfile({
+        name: inputFullnameRef.current.value,
+        profileUrl: inputPhotoUrlRef.current.value
+       }));
        inputFullnameRef.current.value=""
        inputPhotoUrlRef.current.value=""
 

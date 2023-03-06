@@ -1,10 +1,11 @@
-import React, { useRef, useState, Fragment, useContext } from 'react';
+import React, { useRef, useState, Fragment } from 'react';
 import { useNavigate, NavLink } from 'react-router-dom';
-import AuthContext from '../../store/AuthContext';
+import { useDispatch } from "react-redux";
+import { authAction } from "../../store/authReducer";
 import './SignUp.css';
 
 function SignUp() {
-    const authCtx = useContext(AuthContext);
+    const dispatch = useDispatch();
     const navigate = useNavigate();
     const emailRef = useRef();
     const passwordRef = useRef();
@@ -51,7 +52,10 @@ function SignUp() {
         })
       }
     }).then((data) => {
-      authCtx.login(data.idToken, enteredEmail);
+      dispatch(authAction.updateAuthInfo({
+        token: data.idToken,
+        email: emailRef.current.value
+      }))
         navigate('/expenses');
     })
     .catch((err) => {

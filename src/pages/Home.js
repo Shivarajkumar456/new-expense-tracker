@@ -1,10 +1,10 @@
-import { Fragment, useContext } from "react";
+import { Fragment } from "react";
 import { NavLink } from "react-router-dom";
-import AuthContext from "../store/AuthContext";
+import { useSelector } from "react-redux";
 import './Home.css';
 
 const Home = () => {
-    const authCtx = useContext(AuthContext);
+    const token = useSelector(state => state.auth.token);
     const verifyEmail = async (e) => {
         e.preventDefault();
         try {
@@ -15,7 +15,7 @@ const Home = () => {
             },
             body: JSON.stringify({
               requestType: 'VERIFY_EMAIL',
-              idToken: authCtx.token
+              idToken: token
             })
           });
           const data = await res.json();
