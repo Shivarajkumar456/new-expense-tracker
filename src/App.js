@@ -7,12 +7,16 @@ import UpdateProfile from './Components/UpdateProfile/UpdateProfile';
 import ForgotPassword from './Components/ForgotPswd/ForgotPswd';
 import Expenses from './Components/Expenses/Expenses';
 import Premium from './pages/Premium';
+import { useSelector } from 'react-redux';
 import { Fragment } from 'react';
+import './App.css';
 
 function App() {
+  const themeMode = useSelector(state=> state.premium.theme)
   return (
-    <Fragment>
+    <div className={themeMode === 'dark'? 'dark': ''}>
       <Navbar />
+      <div><Premium /></div>
       <Routes>
         <Route path="/" element={<SignUpPage/>} exact/>
         <Route path="/home" element={<Home/>} />
@@ -20,10 +24,9 @@ function App() {
         <Route path="/login" element={<SignUpPage/>} />
         <Route path='/aboutus' element={<About />} />
         <Route path='/expenses' element={<Expenses />} />
-        <Route path='/premium' element={<Premium />} />
         <Route path='/forgotPassword' element={<ForgotPassword />} />
       </Routes> 
-    </Fragment>
+    </div>
   );
 }
 

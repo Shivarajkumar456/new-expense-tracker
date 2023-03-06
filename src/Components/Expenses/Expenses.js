@@ -71,7 +71,7 @@ const Expenses = () => {
     inputDescRef.current.value=""
     inputCatRef.current.value=""
   }
-
+  const newdata = [];
   useEffect(() => {
     async function fetchExpenses(){
     try {
@@ -89,7 +89,7 @@ const Expenses = () => {
 
       if (res.ok) {
         let updatedtotalAmount =0;
-        const newdata = [];
+        
         for (let key in data) {
           newdata.push({ id: key, ...data[key] });
           updatedtotalAmount += Number(data[key].amount)
@@ -110,7 +110,7 @@ const Expenses = () => {
   }
 
   fetchExpenses()
-   }, [dispatch,expenseEmail]);
+   }, [dispatch,expenseEmail, newdata]);
 
    return <>
     <div className="expense-tracker">
@@ -136,9 +136,9 @@ const Expenses = () => {
           <select id="category" name="category" ref={inputCatRef} required>
             <option value="">Select a category</option>
             <option value="Food">Food</option>
-            <option value="Petrol">Shopping</option>
-            <option value="Salary">Entertainment</option>
-            <option value="Salary">Bills</option>
+            <option value="Shopping">Shopping</option>
+            <option value="Entertainment">Entertainment</option>
+            <option value="Bills">Bills</option>
             <option value="Other">Other</option>
           </select>
         <button type="submit">Add Expense</button>
@@ -155,7 +155,7 @@ const Expenses = () => {
               />
             ))}
 
-            <div><b>Total Amount  </b> {totalAmount}</div>
+            <div className='totalAmount'>Total Amount :{totalAmount}</div>
           </div>
       </div>
    </>
