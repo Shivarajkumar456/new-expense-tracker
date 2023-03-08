@@ -4,10 +4,10 @@
     align-items: center;
     /* background-color: #f5f5f5; */
     position: sticky;
-    top: 0;
-    left: 0;
-    height: 70px;
-    padding: 0 20px;
+    width: 100%;
+    height: fit-content;
+    padding: 0 10%;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
   }
 .navbar-heading{
     /* color: #007bff;  */
@@ -22,16 +22,23 @@
   .navbar-list {
     display: flex;
     list-style: none;
-    margin-left: 20px;
+    margin: 0;
+    padding: 20px;
+    justify-content: center;
+    align-items: center;
   }
 
   .navbar-link {
     /* color: #343a40; */
     text-decoration: none;
-    margin-right: 10px;
+    margin: 0 1rem;
   }
 
   .navbar-link:hover {
     /* color: #007bff; */
     text-decoration: none;
+  }
+
+  .btn-premium {
+    margin-left: 10%; 
   }

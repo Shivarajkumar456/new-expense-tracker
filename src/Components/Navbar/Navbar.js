@@ -25,16 +25,16 @@ function Navbar() {
   return (
     <nav className="navbar">
       <div className="navbar-brand">
-        <NavLink to="/" className="navbar-heading" style={{ color: '#007bff', fontStyle: 'italic' }}><h1>MyWeblink</h1></NavLink>
-        <ul className="navbar-list">
+        <NavLink to="/" className="navbar-heading" style={{ color: '#007bff', fontStyle: 'italic' }}><h1>MyExpenses</h1></NavLink>
+        <nav><ul className="navbar-list">
           <li><NavLink to="/home" className="navbar-link">Home</NavLink></li>
-          <li><NavLink to="/products" className="navbar-link">Products</NavLink></li>
           {isLoggedIn && <li><NavLink to="/expenses" className="navbar-link">My Expenses</NavLink></li>}
           <li><NavLink to="/aboutus" className="navbar-link">About Us</NavLink></li>
           {isLoggedIn && <li><NavLink className="navbar-link" onClick={logoutHandler}>LogOut</NavLink></li>}
         </ul>
-        {isLoggedIn && totalAmount>10000 && <Button onClick={showPremium}>Activate Premium</Button>}
+        </nav>
       </div>
+      {isLoggedIn && totalAmount>10000 && <Button className='btn-premium' onClick={showPremium}>Activate Premium</Button>}
     </nav>
   );
 }

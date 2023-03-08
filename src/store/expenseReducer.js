@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const initialExpenseState = {expenses :[], totalAmount:0,firstTime:true}
+const initialExpenseState = {expenses :[], totalAmount:0,firstTime:true, isEditing:false}
 const expenseSlice = createSlice({
 
     name:'expenses',
@@ -20,6 +20,9 @@ const expenseSlice = createSlice({
         {
             state.expenses = action.payload.expenses
             state.totalAmount = state.payload.totalAmount
+        },
+        editing(state, action) {
+            state.isEditing = action.payload;
         }
     }
 
