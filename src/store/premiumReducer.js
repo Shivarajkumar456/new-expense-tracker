@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-const initialState = { theme: 'light', premium: false };
+const initialState = { theme: 'light', premium: false, premiumShow:false };
 
 const premiumSlice = createSlice({
   name: 'Theme',
@@ -21,6 +21,9 @@ const premiumSlice = createSlice({
         state.theme = 'light';
       }
     },
+    showPremium(state, action) {
+      state.premiumShow = action.payload;
+    }
   },
 });
 

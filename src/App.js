@@ -8,15 +8,16 @@ import ForgotPassword from './Components/ForgotPswd/ForgotPswd';
 import Expenses from './Components/Expenses/Expenses';
 import Premium from './pages/Premium';
 import { useSelector } from 'react-redux';
-import { Fragment } from 'react';
 import './App.css';
 
 function App() {
-  const themeMode = useSelector(state=> state.premium.theme)
+  const isLoggedIn = useSelector(state=>state.auth.isLoggedin);
+  const themeMode = useSelector(state=> state.premium.theme);
+  const showPremium = useSelector(state=> state.premium.premiumShow);
   return (
     <div className={themeMode === 'dark'? 'dark': ''}>
       <Navbar />
-      <div><Premium /></div>
+      {isLoggedIn && showPremium && <div><Premium /></div>}
       <Routes>
         <Route path="/" element={<SignUpPage/>} exact/>
         <Route path="/home" element={<Home/>} />

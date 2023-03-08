@@ -8,6 +8,7 @@ const PremiumFeature = () => {
   const dispatch = useDispatch();
   const expenseList = useSelector((state) => state.expense.expenses);
   const activatePremium = useSelector((state) => state.premium.premium);
+  const showPremium = useSelector(state => state.premium.premiumShow);
   const totalAmount = useSelector((state) => state.expense.totalAmount);
   const premiumMode = useSelector((state) => state.premium.theme);
 
@@ -22,11 +23,6 @@ const PremiumFeature = () => {
   const creatingCSV = data.map((row) => row.join(',')).join('\n');
   const blob = new Blob([creatingCSV]);
 
-  // activating premium membership
-  const activatePremiumHandler = () => {
-    dispatch(premiumActions.premium(true));
-  };
-
   // dark mode handler
   const darkModeHandler = () => {
     if (premiumMode === 'light') {
@@ -37,17 +33,18 @@ const PremiumFeature = () => {
   };
 
   if (totalAmount <= 10000 && activatePremium) {
+    dispatch(premiumActions.light());
     dispatch(premiumActions.premium(false));
   }
 
+  const closeHandler = ()=> {
+    dispatch(premiumActions.showPremium(false))
+  }
   return (
     <React.Fragment>
       {totalAmount > 10000 && (
         <div className="activate">
-          {!activatePremium && (
-            <button onClick={activatePremiumHandler}>Activate Premium</button>
-          )}
-          {activatePremium && (
+          {activatePremium && showPremium && (
             <div>
               <button onClick={darkModeHandler}>
                 {premiumMode === 'light' ? 'Dark Mode' : 'Light Mode'}
@@ -55,6 +52,7 @@ const PremiumFeature = () => {
               <a href={URL.createObjectURL(blob)} download='expenses.csv'>
                 Download Your Expenses
               </a>
+              <button onClick={closeHandler}>Close</button>
             </div>
           )}
         </div>
