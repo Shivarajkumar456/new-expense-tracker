@@ -36,7 +36,7 @@ const ExpenseItem = (props) => {
         try {
             const res = await fetch(`https://react-expense-tracker-bdc60-default-rtdb.firebaseio.com/${expenseEmail}/${props.item.id}.json`,
                 {
-                    method: 'DELETE',
+                    method: 'PUT',
                     headers: {
                         'Content-Type': 'application/json'
                     },
