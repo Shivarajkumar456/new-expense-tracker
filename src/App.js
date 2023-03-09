@@ -12,8 +12,12 @@ import './App.css';
 
 function App() {
   const isLoggedIn = useSelector(state=>state.auth.isLoggedin);
-  const themeMode = useSelector(state=> state.premium.theme);
+  let themeMode = useSelector(state=> state.premium.theme);
   const showPremium = useSelector(state=> state.premium.premiumShow);
+  const totalAmount = useSelector(state=>state.expense.totalAmount);
+  if(totalAmount<=10000){
+    themeMode = '';
+  }
   return (
     <div className={themeMode === 'dark'? 'dark': ''}>
       <Navbar />
