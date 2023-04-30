@@ -7,7 +7,7 @@ const ForgotPassword = () => {
     const forgotPasswordHandler=async(event)=>{
         event.preventDefault();
         try{
-          const res = await fetch('https://identitytoolkit.googleapis.com/v1/accounts:sendOobCode?key=AIzaSyAGhMOoCkZh2xzJ3X_mtq7XNf2z2AOvrrQ',
+          const res = await fetch('https://identitytoolkit.googleapis.com/v1/accounts:sendOobCode?key=AIzaSyA_ExM6hUtlNzZIYCMuHlySvECo1wviuC4',
           {
             method:'POST',
             headers :{

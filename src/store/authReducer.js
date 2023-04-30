@@ -1,9 +1,10 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+// Get the authentication information from local storage, if it exists
 const initialAuthState = {
-  isLoggedin: false,
-  token: "",
-  email: "",
+  isLoggedin: localStorage.getItem("exp_token") ? true : false,
+  token: localStorage.getItem("exp_token") || "",
+  email: localStorage.getItem("exp_email") || "",
   fullName: "",
   profilePhoto: "",
 };
@@ -26,11 +27,11 @@ const authSlice = createSlice({
       state.profilePhoto = action.payload.profileUrl;
     },
     logout(state) {
-        localStorage.removeItem('exp_token');
-        localStorage.removeItem('exp_email');
-        state.token = '';
-        state.email = '';
-        state.isLoggedin = false;
+      localStorage.removeItem('exp_token');
+      localStorage.removeItem('exp_email');
+      state.token = '';
+      state.email = '';
+      state.isLoggedin = false;
     }
   },
 });

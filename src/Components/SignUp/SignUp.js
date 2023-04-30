@@ -24,9 +24,9 @@ function SignUp() {
     let url;
 
     if(isLogin){
-      url = 'https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyAGhMOoCkZh2xzJ3X_mtq7XNf2z2AOvrrQ';
+      url = 'https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyA_ExM6hUtlNzZIYCMuHlySvECo1wviuC4';
     }else {
-      url = 'https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyAGhMOoCkZh2xzJ3X_mtq7XNf2z2AOvrrQ'
+      url = 'https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyA_ExM6hUtlNzZIYCMuHlySvECo1wviuC4'
     }
     fetch(url,
     {

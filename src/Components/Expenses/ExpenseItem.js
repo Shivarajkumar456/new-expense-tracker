@@ -9,7 +9,7 @@ const ExpenseItem = (props) => {
         event.preventDefault();
         try {
             console.log(props.item)
-            const res = await fetch(`https://react-expense-tracker-bdc60-default-rtdb.firebaseio.com/${expenseEmail}/${props.item.id}.json`,
+            const res = await fetch(`https://expensetrackerreact-55123-default-rtdb.firebaseio.com/${expenseEmail}/${props.item.id}.json`,
                 {
                     method: 'DELETE',
                     headers: {
