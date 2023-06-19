@@ -45,7 +45,7 @@ const Expenses = () => {
     
     if(isEditing){
       try{
-        const res = await fetch(`https://expensetrackerreact-55123-default-rtdb.firebaseio.com/${expenseEmail}/${id}.json`, {
+        const res = await fetch(`https://react-expense-tracker-bdc60-default-rtdb.firebaseio.com/${expenseEmail}/${id}.json`, {
           method: 'PUT',
           body : JSON.stringify(obj),
           headers: {
@@ -70,7 +70,7 @@ const Expenses = () => {
     }
     else{
     try{
-      const res = await fetch(`https://expensetrackerreact-55123-default-rtdb.firebaseio.com/${expenseEmail}.json`,{
+      const res = await fetch(`https://react-expense-tracker-bdc60-default-rtdb.firebaseio.com/${expenseEmail}.json`,{
         method: 'POST',
         body: JSON.stringify(obj),
         headers: {
@@ -101,7 +101,7 @@ const Expenses = () => {
     async function fetchExpenses(){
     try {
       const res = await fetch(
-        `https://expensetrackerreact-55123-default-rtdb.firebaseio.com/${expenseEmail}.json`,
+        `https://react-expense-tracker-bdc60-default-rtdb.firebaseio.com/${expenseEmail}.json`,
         {
           method: "GET",
           headers: {

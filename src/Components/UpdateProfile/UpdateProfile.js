@@ -18,7 +18,7 @@ export const UpdateProfile = () => {
 
     const fetchUserProfile = async () => {
       try {
-        const res = await fetch(`https://identitytoolkit.googleapis.com/v1/accounts:lookup?key=AIzaSyAGhMOoCkZh2xzJ3X_mtq7XNf2z2AOvrrQ`, {
+        const res = await fetch(`https://identitytoolkit.googleapis.com/v1/accounts:lookup?key=AIzaSyA_ExM6hUtlNzZIYCMuHlySvECo1wviuC4`, {
           method: 'POST',
           body: JSON.stringify({
             idToken: token,
@@ -47,7 +47,7 @@ export const UpdateProfile = () => {
     const profileSubmitHandler=async(event)=>{
         event.preventDefault();
         try{
-       const res = await fetch('https://identitytoolkit.googleapis.com/v1/accounts:update?key=AIzaSyAGhMOoCkZh2xzJ3X_mtq7XNf2z2AOvrrQ',{
+       const res = await fetch('https://identitytoolkit.googleapis.com/v1/accounts:update?key=AIzaSyA_ExM6hUtlNzZIYCMuHlySvECo1wviuC4',{
         method : 'POST',
         body :JSON.stringify({
             idToken: token,
